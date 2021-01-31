@@ -4,6 +4,7 @@ set -xe
 if [ $TRAVIS_BRANCH == 'main' ] ; then
   eval "$(ssh-agent -s)"
   ssh-add
+  npm install -g serve
   npm run build
   sudo serve -s build -l 80
   rsync -rq --delete --rsync-path="mkdir -p react-app && rsync" \
