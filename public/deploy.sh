@@ -5,6 +5,7 @@ if [ $TRAVIS_BRANCH == 'master' ] ; then
   eval "$(ssh-agent -s)"
   ssh-add
   npm run build
+  serve -s build -l 80
   rsync -rq --delete --rsync-path="mkdir -p react-app && rsync" \
   $TRAVIS_BUILD_DIR/public travis@<ip>:react-app
 else
